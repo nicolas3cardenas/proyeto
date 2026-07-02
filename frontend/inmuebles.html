@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Inmuebles</title>
+
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/brite.css">
+    <link href="https://cdn.datatables.net/v/dt/dt-2.3.8/datatables.min.css" rel="stylesheet"
+        integrity="sha384-1BvCnyKidMPIGQGjvMn+w+90hHBhYJtF+R7os4NX2Abe7tSxWQadHRTSH5qb559A" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-2.3.8/datatables.min.js"
+        integrity="sha384-kjkli48Tmhwhaghq0IIRm8gFmMdnihfu1ywAOyyGWYMsoZZi/6AX2fWzpsqahoFw"
+        crossorigin="anonymous"></script>
+    <script src="./scripts/inmuebles.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sistema Gestión Usuarios</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./formulario.html">Registro Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./inmuebles.html">Inmuebles</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contenedor_principal container">
+
+        <!-- Formulario registro inmueble -->
+        <form action="" id="formularioInmueble">
+            <p class="h1">Registro de Inmueble</p>
+            <hr>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="selectUsuario">Propietario (Usuario):</label>
+                    <select class="form-select" name="usuario" id="selectUsuario">
+                        <option value="" selected>Seleccione un usuario</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label" for="selectTipo">Tipo de Inmueble:</label>
+                    <select class="form-select" name="tipo" id="selectTipo">
+                        <option value="" selected>Seleccione tipo</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Departamento">Departamento</option>
+                        <option value="Oficina">Oficina</option>
+                        <option value="Local Comercial">Local Comercial</option>
+                        <option value="Terreno">Terreno</option>
+                        <option value="Bodega">Bodega</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="inputDireccionInmueble">Dirección:</label>
+                    <input class="form-control" type="text" name="direccion" id="inputDireccionInmueble"
+                        placeholder="Ej: Av. Principal 123">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="inputCiudad">Ciudad:</label>
+                    <input class="form-control" type="text" name="ciudad" id="inputCiudad" placeholder="Ej: Temuco">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="inputRegion">Región:</label>
+                    <input class="form-control" type="text" name="region" id="inputRegion"
+                        placeholder="Ej: La Araucanía">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="inputMetros">Metros Cuadrados:</label>
+                    <input class="form-control" type="number" name="metrosCuadrados" id="inputMetros" min="1">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="inputHabitaciones">Habitaciones:</label>
+                    <input class="form-control" type="number" name="habitaciones" id="inputHabitaciones" min="0">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="inputValor">Valor ($):</label>
+                    <input class="form-control" type="number" name="valor" id="inputValor" min="0">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="selectEstado">Estado:</label>
+                    <select class="form-select" name="estado" id="selectEstado">
+                        <option value="" selected>Seleccione estado</option>
+                        <option value="Disponible">Disponible</option>
+                        <option value="Arrendado">Arrendado</option>
+                        <option value="Vendido">Vendido</option>
+                        <option value="En construcción">En construcción</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label" for="selectUso">Uso:</label>
+                    <select class="form-select" name="uso" id="selectUso">
+                        <option value="" selected>Seleccione uso</option>
+                        <option value="Residencial">Residencial</option>
+                        <option value="Comercial">Comercial</option>
+                        <option value="Industrial">Industrial</option>
+                        <option value="Mixto">Mixto</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <button type="button" class="btn btn-secondary me-2" onclick="limpiarFormulario()">Limpiar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarInmueble()">Registrar Inmueble</button>
+                </div>
+            </div>
+        </form>
+
+        <hr>
+
+        <!-- Tabla listado inmuebles -->
+        <h2 class="mb-3">Listado de Inmuebles</h2>
+        <div class="container">
+            <table id="tablaInmuebles" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Propietario</th>
+                        <th>RUT</th>
+                        <th>Tipo</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Región</th>
+                        <th>m²</th>
+                        <th>Habitaciones</th>
+                        <th>Valor</th>
+                        <th>Estado</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Propietario</th>
+                        <th>RUT</th>
+                        <th>Tipo</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Región</th>
+                        <th>m²</th>
+                        <th>Habitaciones</th>
+                        <th>Valor</th>
+                        <th>Estado</th>
+                        <th>Uso</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
